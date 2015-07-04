@@ -6,5 +6,5 @@
     #'foldingStartMarker': '(?i)^;FOLD'
     #'foldingStopMarker': '(?i)^;ENDFOLD'
     #'commentStart': ';'
-    'increaseIndentPattern': '(?i)^\\s*\\b(CONST|LABEL|VAR(_TEMP|_INPUT|_OUTPUT|_IN_OUT)?)\\b'
-    'decreaseIndentPattern': '(?i)^\\s*\\b(END(_CONST|_LABEL|_VAR))\\b'
+    'increaseIndentPattern': '(?i)^\\s*\\b(CONST|LABEL|VAR(_TEMP|_INPUT|_OUTPUT|_IN_OUT)?|IF.*THEN|ELSIF.*THEN|ELSE|CASE.*OF|FOR.*TO.*DO|WHILE.*DO|REPEAT|UNTIL)\\b'
+    'decreaseIndentPattern': '(?i)^\\s*\\b(END(_CONST|_LABEL|_VAR|_IF|_CASE|_FOR|_WHILE|_REPEAT)|ELSIF.*THEN|ELSE|UNTIL)\\b'

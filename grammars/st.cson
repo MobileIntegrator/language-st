@@ -10,10 +10,22 @@
     'include': '#comment'
   }
   {
+    'include': '#string'
+  }
+  {
     'include': '#structure'
   }
   {
     'include': '#declaration'
+  }
+  {
+    'include': '#statements'
+  }
+  {
+    'include': '#types'
+  }
+  {
+    'include': '#constants'
   }
 ]
 
@@ -43,7 +55,7 @@
           '3':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'end': '(?i)\\s*(END_ORGANIZATION_BLOCK)(.*)$'
@@ -53,7 +65,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'name': 'meta.organization-block.st'
@@ -62,16 +74,20 @@
         ]
       }
       {
-        'begin': '(?i)\\s*(FUNCTION)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
+        'begin': '(?i)\\s*(FUNCTION)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(\\s*(:)\\s*(\\b[A-Z_]+\\w{0,23}\\b))?\\s*(.*)$'
         'beginCaptures':
           '1':
             'name': 'storage.type.function.st'
           '2':
             'name': 'entity.name.function.st'
-          '3':
+          #'4':
+            #'name': 'storage.type.st'
+          '5':
+            'name': 'storage.type.st'
+          '6':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'end': '(?i)\\s*(END_FUNCTION)(.*)$'
@@ -81,7 +97,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'name': 'meta.function.st'
@@ -99,7 +115,7 @@
           '3':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'end': '(?i)\\s*(END_FUNCTION_BLOCK)(.*)$'
@@ -109,7 +125,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'name': 'meta.function-block.st'
@@ -127,7 +143,7 @@
           '3':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'end': '(?i)\\s*(END_DATA_BLOCK)(.*)$'
@@ -137,7 +153,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'name': 'meta.data-block.st'
@@ -155,7 +171,7 @@
           '3':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'end': '(?i)\\s*(END_TYPE)(.*)$'
@@ -165,7 +181,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'name': 'meta.type.st'
@@ -185,7 +201,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'end': '(?i)\\s*(END_CONST)(.*)$'
@@ -195,7 +211,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'name': 'meta.declaration.st'
@@ -211,7 +227,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'end': '(?i)\\s*(END_LABEL)(.*)$'
@@ -221,7 +237,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'name': 'meta.declaration.st'
@@ -237,7 +253,7 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'end': '(?i)\\s*(END_VAR)(.*)$'
@@ -247,12 +263,49 @@
           '2':
             'patterns': [
               {
-                'include': 'comment'
+                'include': '#comment'
               }
             ]
         'name': 'meta.declaration.st'
         'patterns': [
           'include': '$self'
         ]
+      }
+    ]
+
+  'statements':
+    'patterns': [
+      {
+        'match': '(?i)\\b(IF|THEN|ELSIF|ELSE|CASE|OF|FOR|TO|BY|WHILE|DO|REPEAT|UNTIL|CONTINUE|EXIT|GOTO|RETURN|END_(IF|CASE|FOR|WHILE|REPEAT))\\b'
+        'name': 'keyword.control.st'
+      }
+    ]
+
+  'types':
+    'patterns': [
+      {
+        'match': '(?i)\\b(BOOL|BYTE|WORD|DWORD|CHAR|INT|DINT|REAL|S5TIME|TIME|DATE|TIME_OF_DAY|DATE_AND_TIME|STRING|ARRAY|STRUCT|TIMER|COUNTER|BLOCK_(FB|FC|DB|SDB)|ANY|POINTER)\\b'
+        'name': 'storage.type.st'
+      }
+    ]
+
+  'constants':
+    'patterns': [
+      {
+        'match': '\\W((2#[0-1]+[0-1_]*)|(16#[0-9A-F]+[0-9A-F_]*)|(8#[0-8]+[0-8_]*))\\W'
+        'name': 'constant.numeric.st'
+      }
+      {
+        'match': '(?i)\\W((([+-]?[0-9]+[0-9_]*)(\\.[0-9]+[0-9_]*)?)(E[+-]?[0-9]+[0-9_]*)?)\\W'
+        'name': 'constant.numeric.st'
+      }
+    ]
+
+  'string':
+    'patterns': [
+      {
+        'begin': '\''
+        'end': '\''
+        'name': 'string.quoted.single.krl'
       }
     ]
