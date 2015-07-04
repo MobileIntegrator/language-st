@@ -1,0 +1,258 @@
+'scopeName': 'source.st'
+'name': 'ST/SCL'
+'fileTypes': [
+  'scl'
+  'st'
+]
+
+'patterns': [
+  {
+    'include': '#comment'
+  }
+  {
+    'include': '#structure'
+  }
+  {
+    'include': '#declaration'
+  }
+]
+
+'repository':
+  'comment':
+    'patterns': [
+      {
+        'begin': '\\(\\*'
+        'end': '\\*\\)'
+        'name': 'comment.block.st'
+      }
+      {
+        'match': '//.*$'
+        'name': 'comment.line.double-slash.st'
+      }
+    ]
+
+  'structure':
+    'patterns': [
+      {
+        'begin': '(?i)\\s*(ORGANIZATION_BLOCK)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'name': 'entity.name.function.st'
+          '3':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'end': '(?i)\\s*(END_ORGANIZATION_BLOCK)(.*)$'
+        'endCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'name': 'meta.organization-block.st'
+        'patterns': [
+          'include': '$self'
+        ]
+      }
+      {
+        'begin': '(?i)\\s*(FUNCTION)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'name': 'entity.name.function.st'
+          '3':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'end': '(?i)\\s*(END_FUNCTION)(.*)$'
+        'endCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'name': 'meta.function.st'
+        'patterns': [
+          'include': '$self'
+        ]
+      }
+      {
+        'begin': '(?i)\\s*(FUNCTION_BLOCK)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'name': 'entity.name.function.st'
+          '3':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'end': '(?i)\\s*(END_FUNCTION_BLOCK)(.*)$'
+        'endCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'name': 'meta.function-block.st'
+        'patterns': [
+          'include': '$self'
+        ]
+      }
+      {
+        'begin': '(?i)\\s*(DATA_BLOCK)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'name': 'entity.name.function.st'
+          '3':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'end': '(?i)\\s*(END_DATA_BLOCK)(.*)$'
+        'endCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'name': 'meta.data-block.st'
+        'patterns': [
+          'include': '$self'
+        ]
+      }
+      {
+        'begin': '(?i)\\s*(TYPE)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'name': 'entity.name.function.st'
+          '3':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'end': '(?i)\\s*(END_TYPE)(.*)$'
+        'endCaptures':
+          '1':
+            'name': 'storage.type.function.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'name': 'meta.type.st'
+        'patterns': [
+          'include': '$self'
+        ]
+      }
+    ]
+
+  'declaration':
+    'patterns': [
+      {
+        'begin': '(?i)\\s*(CONST)(.*)$'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.constant.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'end': '(?i)\\s*(END_CONST)(.*)$'
+        'endCaptures':
+          '1':
+            'name': 'storage.type.constant.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'name': 'meta.declaration.st'
+        'patterns': [
+          'include': '$self'
+        ]
+      }
+      {
+        'begin': '(?i)\\s*(LABEL)(.*)$'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.label.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'end': '(?i)\\s*(END_LABEL)(.*)$'
+        'endCaptures':
+          '1':
+            'name': 'storage.type.label.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'name': 'meta.declaration.st'
+        'patterns': [
+          'include': '$self'
+        ]
+      }
+      {
+        'begin': '(?i)\\s*(VAR(_TEMP|_INPUT|_OUTPUT|_IN_OUT)?)(.*)$'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.variable.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'end': '(?i)\\s*(END_VAR)(.*)$'
+        'endCaptures':
+          '1':
+            'name': 'storage.type.variable.st'
+          '2':
+            'patterns': [
+              {
+                'include': 'comment'
+              }
+            ]
+        'name': 'meta.declaration.st'
+        'patterns': [
+          'include': '$self'
+        ]
+      }
+    ]

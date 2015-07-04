@@ -1,0 +1,10 @@
+'.source.st':
+  'editor':
+    'autoIndentOnPaste': true
+    'softTabs': true
+    'tabLength': 2
+    #'foldingStartMarker': '(?i)^;FOLD'
+    #'foldingStopMarker': '(?i)^;ENDFOLD'
+    #'commentStart': ';'
+    'increaseIndentPattern': '(?i)^\\s*\\b(CONST|LABEL|VAR(_TEMP|_INPUT|_OUTPUT|_IN_OUT)?)\\b'
+    'decreaseIndentPattern': '(?i)^\\s*\\b(END(_CONST|_LABEL|_VAR))\\b'

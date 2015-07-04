@@ -1,0 +1,17 @@
+{
+  "name": "language-st",
+  "main": "./lib/language-st",
+  "version": "0.0.0",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "description": "ST/SCL (Structured Text / Structured Control Language after EN 61131-3) language support in Atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d4nuu8/language-st"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/d4nuu8/language-st/issues"
+  }
+}
