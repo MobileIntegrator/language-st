@@ -1,8 +1,8 @@
-'scopeName': 'source.st'
-'name': 'ST/SCL'
+'scopeName': 'source.vpl'
+'name': 'VPL/INC'
 'fileTypes': [
-  'scl'
-  'st'
+  'vpl'
+  'inc'
 ]
 
 'patterns': [
@@ -33,13 +33,17 @@
   'comment':
     'patterns': [
       {
-        'begin': '\\(\\*'
-        'end': '\\*\\)'
-        'name': 'comment.block.st'
+        'begin': '\\/\\*'
+        'end': '\\*\\/'
+        'name': 'comment.block.vpl'
       }
       {
         'match': '//.*$'
-        'name': 'comment.line.double-slash.st'
+        'name': 'comment.line.double-slash.vpl'
+      }
+      {
+        'match': '\\|.*$'
+        'name': 'comment.line.double-slash.vpl'
       }
     ]
 
@@ -49,9 +53,9 @@
         'begin': '(?i)\\s*(ORGANIZATION_BLOCK)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
         'beginCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
-            'name': 'entity.name.function.st'
+            'name': 'entity.name.function.vpl'
           '3':
             'patterns': [
               {
@@ -61,14 +65,14 @@
         'end': '(?i)\\s*(END_ORGANIZATION_BLOCK)(.*)$'
         'endCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
             'patterns': [
               {
                 'include': '#comment'
               }
             ]
-        'name': 'meta.organization-block.st'
+        'name': 'meta.organization-block.vpl'
         'patterns': [
           'include': '$self'
         ]
@@ -77,13 +81,13 @@
         'begin': '(?i)\\s*(FUNCTION)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(\\s*(:)\\s*(\\b[A-Z_]+\\w{0,23}\\b))?\\s*(.*)$'
         'beginCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
-            'name': 'entity.name.function.st'
+            'name': 'entity.name.function.vpl'
           #'4':
-            #'name': 'storage.type.st'
+            #'name': 'storage.type.vpl'
           '5':
-            'name': 'storage.type.st'
+            'name': 'storage.type.vpl'
           '6':
             'patterns': [
               {
@@ -93,14 +97,14 @@
         'end': '(?i)\\s*(END_FUNCTION)(.*)$'
         'endCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
             'patterns': [
               {
                 'include': '#comment'
               }
             ]
-        'name': 'meta.function.st'
+        'name': 'meta.function.vpl'
         'patterns': [
           'include': '$self'
         ]
@@ -109,9 +113,9 @@
         'begin': '(?i)\\s*(FUNCTION_BLOCK)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
         'beginCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
-            'name': 'entity.name.function.st'
+            'name': 'entity.name.function.vpl'
           '3':
             'patterns': [
               {
@@ -121,14 +125,14 @@
         'end': '(?i)\\s*(END_FUNCTION_BLOCK)(.*)$'
         'endCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
             'patterns': [
               {
                 'include': '#comment'
               }
             ]
-        'name': 'meta.function-block.st'
+        'name': 'meta.function-block.vpl'
         'patterns': [
           'include': '$self'
         ]
@@ -137,9 +141,9 @@
         'begin': '(?i)\\s*(DATA_BLOCK)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
         'beginCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
-            'name': 'entity.name.function.st'
+            'name': 'entity.name.function.vpl'
           '3':
             'patterns': [
               {
@@ -149,14 +153,14 @@
         'end': '(?i)\\s*(END_DATA_BLOCK)(.*)$'
         'endCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
             'patterns': [
               {
                 'include': '#comment'
               }
             ]
-        'name': 'meta.data-block.st'
+        'name': 'meta.data-block.vpl'
         'patterns': [
           'include': '$self'
         ]
@@ -165,9 +169,9 @@
         'begin': '(?i)\\s*(TYPE)\\s+(\\b[A-Z_]+\\w{0,23}\\b)(.*)$'
         'beginCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
-            'name': 'entity.name.function.st'
+            'name': 'entity.name.function.vpl'
           '3':
             'patterns': [
               {
@@ -177,14 +181,14 @@
         'end': '(?i)\\s*(END_TYPE)(.*)$'
         'endCaptures':
           '1':
-            'name': 'storage.type.function.st'
+            'name': 'storage.type.function.vpl'
           '2':
             'patterns': [
               {
                 'include': '#comment'
               }
             ]
-        'name': 'meta.type.st'
+        'name': 'meta.type.vpl'
         'patterns': [
           'include': '$self'
         ]
@@ -197,7 +201,7 @@
         'begin': '(?i)\\s*(CONST)(.*)$'
         'beginCaptures':
           '1':
-            'name': 'storage.type.constant.st'
+            'name': 'storage.type.constant.vpl'
           '2':
             'patterns': [
               {
@@ -207,14 +211,14 @@
         'end': '(?i)\\s*(END_CONST)(.*)$'
         'endCaptures':
           '1':
-            'name': 'storage.type.constant.st'
+            'name': 'storage.type.constant.vpl'
           '2':
             'patterns': [
               {
                 'include': '#comment'
               }
             ]
-        'name': 'meta.declaration.st'
+        'name': 'meta.declaration.vpl'
         'patterns': [
           'include': '$self'
         ]
@@ -223,7 +227,7 @@
         'begin': '(?i)\\s*(LABEL)(.*)$'
         'beginCaptures':
           '1':
-            'name': 'storage.type.label.st'
+            'name': 'storage.type.label.vpl'
           '2':
             'patterns': [
               {
@@ -233,14 +237,14 @@
         'end': '(?i)\\s*(END_LABEL)(.*)$'
         'endCaptures':
           '1':
-            'name': 'storage.type.label.st'
+            'name': 'storage.type.label.vpl'
           '2':
             'patterns': [
               {
                 'include': '#comment'
               }
             ]
-        'name': 'meta.declaration.st'
+        'name': 'meta.declaration.vpl'
         'patterns': [
           'include': '$self'
         ]
@@ -249,7 +253,7 @@
         'begin': '(?i)\\s*(VAR(_TEMP|_INPUT|_OUTPUT|_IN_OUT)?)(.*)$'
         'beginCaptures':
           '1':
-            'name': 'storage.type.variable.st'
+            'name': 'storage.type.variable.vpl'
           '2':
             'patterns': [
               {
@@ -259,14 +263,14 @@
         'end': '(?i)\\s*(END_VAR)(.*)$'
         'endCaptures':
           '1':
-            'name': 'storage.type.variable.st'
+            'name': 'storage.type.variable.vpl'
           '2':
             'patterns': [
               {
                 'include': '#comment'
               }
             ]
-        'name': 'meta.declaration.st'
+        'name': 'meta.declaration.vpl'
         'patterns': [
           'include': '$self'
         ]
@@ -277,7 +281,7 @@
     'patterns': [
       {
         'match': '(?i)\\b(IF|THEN|ELSIF|ELSE|CASE|OF|FOR|TO|BY|WHILE|DO|REPEAT|UNTIL|CONTINUE|EXIT|GOTO|RETURN|END_(IF|CASE|FOR|WHILE|REPEAT))\\b'
-        'name': 'keyword.control.st'
+        'name': 'keyword.control.vpl'
       }
     ]
 
@@ -285,7 +289,7 @@
     'patterns': [
       {
         'match': '(?i)\\b(BOOL|BYTE|WORD|DWORD|CHAR|INT|DINT|REAL|S5TIME|TIME|DATE|TIME_OF_DAY|DATE_AND_TIME|STRING|ARRAY|STRUCT|TIMER|COUNTER|BLOCK_(FB|FC|DB|SDB)|ANY|POINTER)\\b'
-        'name': 'storage.type.st'
+        'name': 'storage.type.vpl'
       }
     ]
 
@@ -293,19 +297,30 @@
     'patterns': [
       {
         'match': '\\W((2#[0-1]+[0-1_]*)|(16#[0-9A-F]+[0-9A-F_]*)|(8#[0-8]+[0-8_]*))\\W'
-        'name': 'constant.numeric.st'
+        'name': 'constant.numeric.vpl'
       }
       {
         'match': '(?i)\\W((([+-]?[0-9]+[0-9_]*)(\\.[0-9]+[0-9_]*)?)(E[+-]?[0-9]+[0-9_]*)?)\\W'
-        'name': 'constant.numeric.st'
+        'name': 'constant.numeric.vpl'
       }
     ]
 
   'string':
     'patterns': [
       {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.vpl'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.vpl'
+        'name': 'string.quoted.double.vpl'
+      }
+      {
         'begin': '\''
         'end': '\''
-        'name': 'string.quoted.single.krl'
+        'name': 'string.quoted.single.vpl'
       }
     ]

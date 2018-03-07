@@ -8,10 +8,10 @@
   "description": "ST/SCL (Structured Text / Structured Control Language after EN 61131-3) language support in Atom",
   "repository": {
     "type": "git",
-    "url": "https://github.com/d4nuu8/language-st"
+    "url": "https://github.com/MobileIntegrator/language-vpl"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/d4nuu8/language-st/issues"
+    "url": "https://github.com/MobileIntegrator/language-vpl/issues"
   }
 }
