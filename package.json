@@ -1,11 +1,12 @@
 {
-  "name": "language-st",
-  "main": "./lib/language-st",
+  "name": "language-vpl",
+  "main": "./lib/language-vpl",
   "version": "0.0.0",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "description": "ST/SCL (Structured Text / Structured Control Language after EN 61131-3) language support in Atom",
+  "description": "VPL/INC (Structured Text for Logic IO products) 
+language support in Atom",
   "repository": {
     "type": "git",
     "url": "https://github.com/MobileIntegrator/language-vpl"
