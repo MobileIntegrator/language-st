@@ -27,6 +27,9 @@
   {
     'include': '#constants'
   }
+  {
+    'include': '#operators'
+  }
 ]
 
 'repository':
@@ -260,7 +263,7 @@
                 'include': '#comment'
               }
             ]
-        'end': '(?i)\\s*(END_VAR)(.*)$'
+        'end': '(?i)\\s*(END_VAR;)(.*)$'
         'endCaptures':
           '1':
             'name': 'storage.type.variable.vpl'
@@ -288,7 +291,7 @@
   'types':
     'patterns': [
       {
-        'match': '(?i)\\b(BOOL|BYTE|WORD|DWORD|CHAR|INT|DINT|REAL|S5TIME|TIME|DATE|TIME_OF_DAY|DATE_AND_TIME|STRING|ARRAY|STRUCT|TIMER|COUNTER|BLOCK_(FB|FC|DB|SDB)|ANY|POINTER)\\b'
+        'match': '(?i)\\b(BOOL|SINT|INT|DINT|FLOAT|STRING|PTR|CHANNEL|SEMAPHORE|MUTEX|FILE|SYSHANDLE|ARRAY|STRUCT|TON|TOF|R_TRIG|F_TRIG|RF_TRIG)\\b'
         'name': 'storage.type.vpl'
       }
     ]
@@ -296,11 +299,15 @@
   'constants':
     'patterns': [
       {
-        'match': '\\W((2#[0-1]+[0-1_]*)|(16#[0-9A-F]+[0-9A-F_]*)|(8#[0-8]+[0-8_]*))\\W'
+        'match': '((2#[0-1]+[0-1_]*)|(16#[0-9A-F]+[0-9A-F_]*)|(8#[0-8]+[0-8_]*))'
         'name': 'constant.numeric.vpl'
       }
       {
-        'match': '(?i)\\W((([+-]?[0-9]+[0-9_]*)(\\.[0-9]+[0-9_]*)?)(E[+-]?[0-9]+[0-9_]*)?)\\W'
+        'match': '(?i)((([+-]?[0-9]+[0-9_]*)(\\.[0-9]+[0-9_]*)?)(E[+-]?[0-9]+[0-9_]*)?)'
+        'name': 'constant.numeric.vpl'
+      }
+      {
+        'match': '(?i)\\b(TRUE|FALSE)\\b'
         'name': 'constant.numeric.vpl'
       }
     ]
@@ -324,3 +331,23 @@
         'name': 'string.quoted.single.vpl'
       }
     ]
+
+    'operators':
+      'patterns': [
+        {
+          'match': '(?i)\\b(AND|OR|NOT|XOR)\\b'
+          'name': 'keyword.operator.logical.vpl'
+        }
+        {
+          'match': '(\\+|\\-|\\*|/|%)'
+          'name': 'keyword.operator.arithmetic.vpl'
+        }
+        {
+          'match': '(=|<>|<=|>=|<(?!<)|>(?!>))'
+          'name': 'keyword.operator.comparison.vpl'
+        }
+        {
+          'match': '(:=)'
+          'name': 'keyword.operator.assignment.vpl'
+        }
+      ]

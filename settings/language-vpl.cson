@@ -2,7 +2,7 @@
   'editor':
     'autoIndentOnPaste': true
     'softTabs': true
-    'tabLength': 2
+    'tabLength': 3
     #'foldingStartMarker': '(?i)^;FOLD'
     #'foldingStopMarker': '(?i)^;ENDFOLD'
     #'commentStart': ';'
